@@ -1,17 +1,12 @@
 package com.prudhvir3ddy.earlyentrypoint_sample
 
 import androidx.test.core.app.ActivityScenario
-import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-
-import org.junit.Test
-import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
+import javax.inject.Inject
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -24,14 +19,20 @@ class ExampleInstrumentedTest {
     @get:Rule
     val hiltRule = HiltAndroidRule(this)
 
+    @Inject
+    lateinit var toolsInitializer: ToolsInitializerImpl
+
     @Before
     fun init() {
         hiltRule.inject()
+        toolsInitializer.initTools()
     }
 
     @Test
     fun useAppContext() {
-        val activityScenario: ActivityScenario<MainActivity> = ActivityScenario.launch(MainActivity::class.java)
+
+        val activityScenario: ActivityScenario<MainActivity> =
+            ActivityScenario.launch(MainActivity::class.java)
 
         // Context of the app under test.
 //        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
