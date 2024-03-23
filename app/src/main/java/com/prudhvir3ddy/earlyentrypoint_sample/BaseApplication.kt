@@ -4,7 +4,6 @@ import android.app.Application
 import android.util.Log
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
-import androidx.work.WorkManager
 import dagger.hilt.InstallIn
 import dagger.hilt.android.EarlyEntryPoint
 import dagger.hilt.android.EarlyEntryPoints
@@ -13,6 +12,7 @@ import dagger.hilt.components.SingletonComponent
 open class BaseApplication : Application(), Configuration.Provider {
 
     private val workerFactory by lazy { entryPoints().workerFactory() }
+    private val toolsInitializer by lazy { entryPoints().toolsInitializer() }
 
     // no @Inject, since Hilt "@CustomTestApplication does not support application classes (or super classes) with @Inject fields."
     // we make use of the "EntryPointAccessors-pattern" instead
@@ -20,6 +20,7 @@ open class BaseApplication : Application(), Configuration.Provider {
     @InstallIn(SingletonComponent::class)
     interface ApplicationEarlyEntryPoint {
         fun workerFactory(): HiltWorkerFactory
+        fun toolsInitializer(): ToolsInitializerImpl
     }
 
     private fun entryPoints(): ApplicationEarlyEntryPoint =
@@ -27,8 +28,7 @@ open class BaseApplication : Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
-        val workRequest = ExampleWorker.createOneTimeWorkRequest(0L)
-        WorkManager.getInstance(applicationContext).enqueue(workRequest)
+        toolsInitializer.initTools()
     }
 
 
