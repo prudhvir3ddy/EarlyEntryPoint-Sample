@@ -49,24 +49,24 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     // Dagger hilt
-    implementation("com.google.dagger:hilt-android:2.50")
-    kapt("com.google.dagger:hilt-android-compiler:2.50")
+    implementation("com.google.dagger:hilt-android:2.51")
+    kapt("com.google.dagger:hilt-android-compiler:2.51")
 
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.50")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.50")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.51")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.51")
 
     // Activity-ktx
     implementation("androidx.activity:activity-ktx:1.8.2")
 
     // Workmanager
-    implementation("androidx.work:work-runtime-ktx:2.8.0")
-    androidTestImplementation("androidx.work:work-testing:2.8.0")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    androidTestImplementation("androidx.work:work-testing:2.9.0")
 
     // Workmanager hilt
-    implementation("androidx.hilt:hilt-work:1.1.0")
+    implementation("androidx.hilt:hilt-work:1.2.0")
     // When using Kotlin.
-    kapt("androidx.hilt:hilt-compiler:1.1.0")
-    kaptAndroidTest("androidx.hilt:hilt-compiler:1.1.0")
+    kapt("androidx.hilt:hilt-compiler:1.2.0")
+    kaptAndroidTest("androidx.hilt:hilt-compiler:1.2.0")
 }
 
 // Allow references to generated code
