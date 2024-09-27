@@ -8,6 +8,6 @@ import javax.inject.Singleton
 class SessionStorage @Inject constructor() {
 
     fun printObjectName(tag: String) {
-        Log.d("SessionStorage $tag", this.hashCode().toString())
+        Log.d("SessionStorage-$tag", this.hashCode().toString())
     }
 }

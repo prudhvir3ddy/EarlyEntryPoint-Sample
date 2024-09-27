@@ -59,6 +59,7 @@ dependencies {
 
     // Workmanager
     implementation("androidx.work:work-runtime-ktx:2.8.0")
+    androidTestImplementation("androidx.work:work-testing:2.8.0")
 
     // Workmanager hilt
     implementation("androidx.hilt:hilt-work:1.1.0")
